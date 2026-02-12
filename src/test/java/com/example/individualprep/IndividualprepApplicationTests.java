@@ -86,4 +86,28 @@ class IndividualprepApplicationTests {
 		assertArrayEquals(new double[]{5,8}, normalResult);
 		assertNull(abnormalResult);
 	}
+
+	@Test
+	void testSubtract1() {
+		double o1 = 6.9;
+		double o2 = 6.7;
+		ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+		assertEquals(0.2, arithmeticUtility.subtract(o1,o2), 0.0001);
+	}
+
+	@Test
+	void testSubtract2() {
+		double o1 = 127346.283;
+		double o2 = 127346.283;
+		ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+		assertEquals(0, arithmeticUtility.subtract(o1,o2), 0.0001);
+	}
+
+	@Test
+	void testSubtract3() {
+		double o1 = 6.7;
+		double o2 = 6.9;
+		ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+		assertEquals(-0.2, arithmeticUtility.subtract(o1,o2), 0.0001);
+	}
 }
