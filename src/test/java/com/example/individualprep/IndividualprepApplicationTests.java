@@ -97,11 +97,13 @@ class IndividualprepApplicationTests {
 
         double[] normalResult1 = vectorUtility.subtract(vector1, vector2);
         double[] normalResult2 = vectorUtility.subtract(vector2, vector1);
-        double[] abnormalResult = vectorUtility.subtract(vector2, vector3);
 
         assertArrayEquals(new double[]{-3, -4}, normalResult1);
         assertArrayEquals(new double[]{3, 4}, normalResult2);
-        assertNull(abnormalResult);
+        
+        assertThrows(IllegalArgumentException.class, () -> vectorUtility.subtract(vector2, vector3));
+        assertThrows(IllegalArgumentException.class, () -> vectorUtility.subtract(null, vector1));
+        assertThrows(IllegalArgumentException.class, () -> vectorUtility.subtract(vector1, null));
     }
 
     @Test
