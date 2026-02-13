@@ -255,4 +255,36 @@ class IndividualprepApplicationTests {
         VectorUtility vectorUtility = new VectorUtility();
         assertThrows(IllegalArgumentException.class, () -> vectorUtility.norm(null));
     }
+
+    @Test
+    void testAdd1() {
+        double o1 = 10.5;
+        double o2 = 4.5;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertEquals(15.0, arithmeticUtility.add(o1, o2), 0.0001);
+    }
+
+    @Test
+    void testAdd2() {
+        double o1 = -5.5;
+        double o2 = 3.0;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertEquals(-2.5, arithmeticUtility.add(o1, o2), 0.0001);
+    }
+
+    @Test
+    void testAdd3() {
+        double o1 = 0.1;
+        double o2 = 0.2;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertEquals(0.3, arithmeticUtility.add(o1, o2), 0.0001);
+    }
+
+    @Test
+    void testAdd4() {
+        double o1 = 1000000.0;
+        double o2 = 0.0;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertEquals(1000000.0, arithmeticUtility.add(o1, o2), 0.0001);
+    }
 }
