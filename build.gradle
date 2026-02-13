@@ -22,6 +22,14 @@ checkstyle {
     showViolations = true
 }
 
+sonar {
+    properties {
+        property "sonar.projectKey", "advprog-2026-B1-project_individual-preparation"
+        property "sonar.organization", "advprog-2026-b1-project"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
+}
+
 configurations.checkstyle {
     resolutionStrategy.capabilitiesResolution.withCapability("com.google.collections:google-collections") {
         select("com.google.guava:guava:0")

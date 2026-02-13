@@ -28,10 +28,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build and Lint with Caching
-        run: ./gradlew build check --configuration-cache
+        run: ./gradlew clean build check --configuration-cache
 
-      - name: SonarCloud Analysis
+      - name: SonarCloud Analysis with Caching
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew sonar -Dsonar.projectKey=advprog-2026-b1-project -Dsonar.organization=advprog-2026-B1-project
+        run: ./gradlew sonar --configuration-cache
