@@ -89,6 +89,22 @@ class IndividualprepApplicationTests {
     }
 
     @Test
+    void testSubtractVector() {
+        VectorUtility vectorUtility = new VectorUtility();
+        double[] vector1 = {1, 2};
+        double[] vector2 = {4, 6};
+        double[] vector3 = {7, 8, 9};
+
+        double[] normalResult1 = vectorUtility.subtract(vector1, vector2);
+        double[] normalResult2 = vectorUtility.subtract(vector2, vector1);
+        double[] abnormalResult = vectorUtility.subtract(vector2, vector3);
+
+        assertArrayEquals(new double[]{-3, -4}, normalResult1);
+        assertArrayEquals(new double[]{3, 4}, normalResult2);
+        assertNull(abnormalResult);
+    }
+
+    @Test
     void testSubtract1() {
         double o1 = 6.9;
         double o2 = 6.7;
