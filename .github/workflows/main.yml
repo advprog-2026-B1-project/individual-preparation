@@ -27,8 +27,8 @@ jobs:
       - name: Grant execute permission
         run: chmod +x gradlew
 
-      - name: Build and Lint
-        run: ./gradlew build check
+      - name: Build and Lint with Caching
+        run: ./gradlew build check --configuration-cache
 
       - name: SonarCloud Analysis
         env:
