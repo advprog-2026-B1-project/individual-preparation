@@ -160,5 +160,37 @@ class IndividualprepApplicationTests {
         double o2 = 3.0;
         ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
         assertEquals(0.3333, arithmeticUtility.divide(o1, o2), 0.0001);
-    }   
+    }
+
+    @Test
+    void testMultiply1() {
+        double o1 = 5;
+        double o2 = 4;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertEquals(20.0, arithmeticUtility.multiply(o1, o2), 0.0001);
+    }
+
+    @Test
+    void testMultiply2() {
+        double o1 = 5;
+        double o2 = 0;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertEquals(0.0, arithmeticUtility.multiply(o1, o2), 0.0001);
+    }
+
+    @Test
+    void testMultiply3() {
+        double o1 = -3;
+        double o2 = 5;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertEquals(-15.0, arithmeticUtility.multiply(o1, o2), 0.0001);
+    }
+
+    @Test
+    void testMultiply4() {
+        double o1 = 3.3;
+        double o2 = 2.2;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertEquals(7.26, arithmeticUtility.multiply(o1, o2), 0.0001);
+    }
 }
