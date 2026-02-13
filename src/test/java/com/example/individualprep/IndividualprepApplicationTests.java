@@ -64,6 +64,7 @@ class IndividualprepApplicationTests {
         assertEquals(41.0, vectorUtility.dotProduct(v1, v2), 0.0001);
     }
 
+    @Test
     void testExponentArithmetic() {
         ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
         double a = 5;
@@ -110,4 +111,36 @@ class IndividualprepApplicationTests {
         ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
         assertEquals(-0.2, arithmeticUtility.subtract(o1, o2), 0.0001);
     }
+
+    @Test
+    void testDivideByZero() {
+        double o1 = 6.9;
+        double o2 = 0.0;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertThrows(ArithmeticException.class, () -> arithmeticUtility.divide(o1, o2));
+    }
+
+    @Test
+    void testDivide1() {
+        double o1 = 6.9;
+        double o2 = 2.0;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertEquals(3.45, arithmeticUtility.divide(o1, o2), 0.0001);
+    }
+
+    @Test
+    void testDivide2() {
+        double o1 = 127346.283;
+        double o2 = 127346.283;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertEquals(1.0, arithmeticUtility.divide(o1, o2), 0.0001);
+    }
+
+    @Test
+    void testDivide3() {
+        double o1 = 1.0;
+        double o2 = 3.0;
+        ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
+        assertEquals(0.3333, arithmeticUtility.divide(o1, o2), 0.0001);
+    }   
 }
