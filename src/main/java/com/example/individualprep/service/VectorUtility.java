@@ -19,8 +19,11 @@ public class VectorUtility {
 
     public double[] subtract(double[] v1, double[] v2) {
         // TODO: Implement me properly!
+        if (v1 == null || v2 == null) {
+            throw new IllegalArgumentException("Vectors must not be null");
+        }
         if (v1.length != v2.length) {
-            return null;
+            throw new IllegalArgumentException("Vectors must have same length");
         }
         double[] result = new double[v1.length];
         for (int index = 0; index < v1.length; index++) {
