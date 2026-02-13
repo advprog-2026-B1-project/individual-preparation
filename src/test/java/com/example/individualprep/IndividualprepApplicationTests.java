@@ -163,6 +163,34 @@ class IndividualprepApplicationTests {
     }
 
     @Test
+    void testMultiplyVectorByScalar() {
+        VectorUtility vectorUtility = new VectorUtility();
+
+        double[] v1 = {1, 2, 3};
+        int scalar = 3;
+        double[] expected = {3, 6, 9};
+        assertArrayEquals(expected, vectorUtility.multiply(v1, scalar), 0.0001);
+
+        double[] v2 = {-1, -2, 5};
+        int scalar2 = 2;
+        double[] expected2 = {-2, -4, 10};
+        assertArrayEquals(expected2, vectorUtility.multiply(v2, scalar2), 0.0001);
+
+        double[] v3 = {0, 4, 5};
+        int scalar3 = 0;
+        double[] expected3 = {0, 0, 0};
+        assertArrayEquals(expected3, vectorUtility.multiply(v3, scalar3), 0.0001);
+
+        double[] v4 = {};
+        int scalar4 = 5;
+        double[] expected4 = {};
+        assertArrayEquals(expected4, vectorUtility.multiply(v4, scalar4), 0.0001);
+
+        assertThrows(IllegalArgumentException.class, () -> vectorUtility.multiply(null, 3));
+    }
+
+
+    @Test
     void testMultiply1() {
         double o1 = 5;
         double o2 = 4;

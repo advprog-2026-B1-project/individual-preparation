@@ -33,8 +33,17 @@ public class VectorUtility {
     }
 
     public double[] multiply(double[] v1, int x) {
-        // TODO: Implement me properly!
-        return new double[]{0.0, 0.0, 0.0};
+        if (v1 == null) {
+            throw new IllegalArgumentException("Vector cannot be null");
+        }
+
+        double[] result = new double[v1.length];
+
+        for (int index = 0; index < v1.length; index++) {
+            result[index] = v1[index] * x;
+        }
+
+        return result;
     }
 
     public double dotProduct(double[] v1, double[] v2) {
