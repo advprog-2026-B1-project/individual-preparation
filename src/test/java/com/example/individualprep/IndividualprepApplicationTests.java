@@ -221,4 +221,38 @@ class IndividualprepApplicationTests {
         ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
         assertEquals(7.26, arithmeticUtility.multiply(o1, o2), 0.0001);
     }
+
+    @Test
+    void testNorm1() {
+        double[] v1 = {3.0, 4.0};
+        VectorUtility vectorUtility = new VectorUtility();
+        assertEquals(5.0, vectorUtility.norm(v1), 0.0001);
+    }
+
+    @Test
+    void testNorm2() {
+        double[] v1 = {-1.0, -2.0, -2.0};
+        VectorUtility vectorUtility = new VectorUtility();
+        assertEquals(3.0, vectorUtility.norm(v1), 0.0001);
+    }
+
+    @Test
+    void testNorm3() {
+        double[] v1 = {0.0, 0.0, 0.0};
+        VectorUtility vectorUtility = new VectorUtility();
+        assertEquals(0.0, vectorUtility.norm(v1), 0.0001);
+    }
+
+    @Test
+    void testNormDecimal() {
+        double[] v1 = {1.2, 3.4, 5.6};
+        VectorUtility vectorUtility = new VectorUtility();
+        assertEquals(6.6603, vectorUtility.norm(v1), 0.0001);
+    }
+
+    @Test
+    void testNormNull() {
+        VectorUtility vectorUtility = new VectorUtility();
+        assertThrows(IllegalArgumentException.class, () -> vectorUtility.norm(null));
+    }
 }
