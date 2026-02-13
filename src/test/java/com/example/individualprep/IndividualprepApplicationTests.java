@@ -64,6 +64,7 @@ class IndividualprepApplicationTests {
         assertEquals(41.0, vectorUtility.dotProduct(v1, v2), 0.0001);
     }
 
+    @Test
     void testExponentArithmetic() {
         ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
         double a = 5;
@@ -85,6 +86,24 @@ class IndividualprepApplicationTests {
 
         assertArrayEquals(new double[]{5, 8}, normalResult);
         assertNull(abnormalResult);
+    }
+
+    @Test
+    void testSubtractVector() {
+        VectorUtility vectorUtility = new VectorUtility();
+        double[] vector1 = {1, 2};
+        double[] vector2 = {4, 6};
+        double[] vector3 = {7, 8, 9};
+
+        double[] normalResult1 = vectorUtility.subtract(vector1, vector2);
+        double[] normalResult2 = vectorUtility.subtract(vector2, vector1);
+
+        assertArrayEquals(new double[]{-3, -4}, normalResult1);
+        assertArrayEquals(new double[]{3, 4}, normalResult2);
+        
+        assertThrows(IllegalArgumentException.class, () -> vectorUtility.subtract(vector2, vector3));
+        assertThrows(IllegalArgumentException.class, () -> vectorUtility.subtract(null, vector1));
+        assertThrows(IllegalArgumentException.class, () -> vectorUtility.subtract(vector1, null));
     }
 
     @Test
@@ -112,34 +131,34 @@ class IndividualprepApplicationTests {
     }
 
     @Test
-    void testMultiply1() {
-        double o1 = 5;
-        double o2 = 4;
+    void testDivideByZero() {
+        double o1 = 6.9;
+        double o2 = 0.0;
         ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
-        assertEquals(20.0, arithmeticUtility.multiply(o1, o2), 0.0001);
+        assertThrows(ArithmeticException.class, () -> arithmeticUtility.divide(o1, o2));
     }
 
     @Test
-    void testMultiply2() {
-        double o1 = 5;
-        double o2 = 0;
+    void testDivide1() {
+        double o1 = 6.9;
+        double o2 = 2.0;
         ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
-        assertEquals(0.0, arithmeticUtility.multiply(o1, o2), 0.0001);
+        assertEquals(3.45, arithmeticUtility.divide(o1, o2), 0.0001);
     }
 
     @Test
-    void testMultiply3() {
-        double o1 = -3;
-        double o2 = 5;
+    void testDivide2() {
+        double o1 = 127346.283;
+        double o2 = 127346.283;
         ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
-        assertEquals(-15.0, arithmeticUtility.multiply(o1, o2), 0.0001);
+        assertEquals(1.0, arithmeticUtility.divide(o1, o2), 0.0001);
     }
 
     @Test
-    void testMultiply4() {
-        double o1 = 3.3;
-        double o2 = 2.2;
+    void testDivide3() {
+        double o1 = 1.0;
+        double o2 = 3.0;
         ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
-        assertEquals(7.26, arithmeticUtility.multiply(o1, o2), 0.0001);
-    }
+        assertEquals(0.3333, arithmeticUtility.divide(o1, o2), 0.0001);
+    }   
 }
