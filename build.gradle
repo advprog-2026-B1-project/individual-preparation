@@ -1,29 +1,62 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '4.0.2'
-	id 'io.spring.dependency-management' version '1.1.7'
+    id 'java'
+    id 'org.springframework.boot' version '3.4.2'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'jacoco'
+    id 'checkstyle'
+    id 'org.sonarqube' version '7.2.2.6593'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-description = 'Individual preparation for the Advanced Programming course at the Faculty of Computer Science Universitas Indonesia'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+checkstyle {
+    toolVersion = "10.12.5"
+    ignoreFailures = false
+    showViolations = true
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "advprog-2026-B1-project_individual-preparation"
+        property "sonar.organization", "advprog-2026-b1-project"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
+}
+
+configurations.checkstyle {
+    resolutionStrategy.capabilitiesResolution.withCapability("com.google.collections:google-collections") {
+        select("com.google.guava:guava:0")
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+tasks.named('sonar').configure {
+    dependsOn test
 }
