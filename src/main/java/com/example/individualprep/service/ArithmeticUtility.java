@@ -14,7 +14,9 @@ public class ArithmeticUtility {
         return o1 - o2;
     }
 
-    public double multiply(double o1, double o2) { return o1*o2; }
+    public double multiply(double o1, double o2) {
+        return o1 * o2;
+    }
 
     public double divide(double o1, double o2) {
         // TODO: Implement me properly!
