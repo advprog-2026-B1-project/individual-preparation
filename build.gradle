@@ -19,6 +19,13 @@ java {
 checkstyle {
     toolVersion = "10.12.5"
     ignoreFailures = false
+    showViolations = true
+}
+
+configurations.checkstyle {
+    resolutionStrategy.capabilitiesResolution.withCapability("com.google.collections:google-collections") {
+        select("com.google.guava:guava:0")
+    }
 }
 
 jacocoTestReport {
